@@ -1,4 +1,4 @@
-package ds.utils;
+package club.super13.ds.utils;
 
 public class LocalIpAddressUtil {
     public static String resolveLocalIp() {

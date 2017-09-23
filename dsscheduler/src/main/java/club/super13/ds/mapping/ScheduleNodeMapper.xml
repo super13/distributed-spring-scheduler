@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="club.super13.ds.mapping.ScheduleNodeMapper" >
+  <resultMap id="BaseResultMap" type="club.super13.ds.model.ScheduleNode" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="host" property="host" jdbcType="VARCHAR" />
+    <result column="last_ping" property="lastPing" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="is_leader" property="isLeader" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, host, last_ping, create_time, is_leader
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ds_schedule_nodes
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ds_schedule_nodes
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="club.super13.ds.model.ScheduleNode" >
+    insert into ds_schedule_nodes (id, host, last_ping, 
+      create_time, is_leader)
+    values (#{id,jdbcType=BIGINT}, #{host,jdbcType=VARCHAR}, #{lastPing,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{isLeader,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="club.super13.ds.model.ScheduleNode" >
+    insert into ds_schedule_nodes
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="host != null" >
+        host,
+      </if>
+      <if test="lastPing != null" >
+        last_ping,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="isLeader != null" >
+        is_leader,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="host != null" >
+        #{host,jdbcType=VARCHAR},
+      </if>
+      <if test="lastPing != null" >
+        #{lastPing,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isLeader != null" >
+        #{isLeader,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="club.super13.ds.model.ScheduleNode" >
+    update ds_schedule_nodes
+    <set >
+      <if test="host != null" >
+        host = #{host,jdbcType=VARCHAR},
+      </if>
+      <if test="lastPing != null" >
+        last_ping = #{lastPing,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isLeader != null" >
+        is_leader = #{isLeader,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="club.super13.ds.model.ScheduleNode" >
+    update ds_schedule_nodes
+    set host = #{host,jdbcType=VARCHAR},
+      last_ping = #{lastPing,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      is_leader = #{isLeader,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

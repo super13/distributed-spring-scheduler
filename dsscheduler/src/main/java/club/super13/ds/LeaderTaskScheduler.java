@@ -1,7 +1,7 @@
-package ds;
+package club.super13.ds;
 
-import ds.service.ScheduleNodeService;
-import ds.service.TaskStatusService;
+import club.super13.ds.service.ScheduleNodeService;
+import club.super13.ds.service.TaskStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.EmbeddedValueResolverAware;
 import org.springframework.scheduling.Trigger;

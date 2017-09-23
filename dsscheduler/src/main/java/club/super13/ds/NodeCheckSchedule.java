@@ -1,8 +1,6 @@
-package ds;
+package club.super13.ds;
 
-import ds.service.ScheduleNodeService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import club.super13.ds.service.ScheduleNodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.PropertySource;
@@ -14,7 +12,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Lazy(false)
-@PropertySource("classpath:scheduled.properties")
 public class NodeCheckSchedule {
 
     @Autowired

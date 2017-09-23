@@ -1,6 +1,6 @@
-package ds.service;
+package club.super13.ds.service;
 
-import ds.model.TaskStatus;
+import club.super13.ds.model.TaskStatus;
 
 public interface TaskStatusService {
     void addTaskStatus(TaskStatus taskStatus);

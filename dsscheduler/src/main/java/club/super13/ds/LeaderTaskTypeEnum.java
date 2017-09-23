@@ -1,4 +1,4 @@
-package ds;
+package club.super13.ds;
 
 /**
  * Created by super13 on 8/18/17.

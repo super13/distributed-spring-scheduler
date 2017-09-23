@@ -1,4 +1,4 @@
-package ds;
+package club.super13.ds;
 
 import java.lang.annotation.*;
 

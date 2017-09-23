@@ -1,4 +1,4 @@
-package ds.constants;
+package club.super13.ds.constants;
 
 /**
  * Created by super13 on 7/26/17.

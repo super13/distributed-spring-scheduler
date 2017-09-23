@@ -1,4 +1,4 @@
-package ds;
+package club.super13.ds;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

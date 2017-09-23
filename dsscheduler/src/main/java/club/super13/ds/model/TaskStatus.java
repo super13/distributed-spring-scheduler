@@ -1,4 +1,4 @@
-package ds.model;
+package club.super13.ds.model;
 public class TaskStatus {
     private Long id;
 

@@ -1,4 +1,4 @@
-package ds.model;
+package club.super13.ds.model;
 
 public class ScheduleNode {
     private Long id;

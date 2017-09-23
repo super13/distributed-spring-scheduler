@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="club.super13.ds.mapping.TaskStatusMapper" >
+  <resultMap id="BaseResultMap" type="club.super13.ds.model.TaskStatus" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="task_id" property="taskId" jdbcType="VARCHAR" />
+    <result column="host" property="host" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="status_msg" property="statusMsg" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="time_spends" property="timeSpends" jdbcType="BIGINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="club.super13.ds.model.TaskStatus" extends="BaseResultMap" >
+    <result column="param" property="param" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, task_id, host, status, status_msg, start_time, end_time, time_spends
+  </sql>
+  <sql id="Blob_Column_List" >
+    param
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ds_task_status
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ds_task_status
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="club.super13.ds.model.TaskStatus" >
+    insert into ds_task_status (id, task_id, host, 
+      status, status_msg, start_time, 
+      end_time, time_spends, param
+      )
+    values (#{id,jdbcType=BIGINT}, #{taskId,jdbcType=VARCHAR}, #{host,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{statusMsg,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{timeSpends,jdbcType=BIGINT}, #{param,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="club.super13.ds.model.TaskStatus" >
+    insert into ds_task_status
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="taskId != null" >
+        task_id,
+      </if>
+      <if test="host != null" >
+        host,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="statusMsg != null" >
+        status_msg,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="timeSpends != null" >
+        time_spends,
+      </if>
+      <if test="param != null" >
+        param,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="taskId != null" >
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="host != null" >
+        #{host,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="statusMsg != null" >
+        #{statusMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timeSpends != null" >
+        #{timeSpends,jdbcType=BIGINT},
+      </if>
+      <if test="param != null" >
+        #{param,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="club.super13.ds.model.TaskStatus" >
+    update ds_task_status
+    <set >
+      <if test="taskId != null" >
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="host != null" >
+        host = #{host,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="statusMsg != null" >
+        status_msg = #{statusMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timeSpends != null" >
+        time_spends = #{timeSpends,jdbcType=BIGINT},
+      </if>
+      <if test="param != null" >
+        param = #{param,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="club.super13.ds.model.TaskStatus" >
+    update ds_task_status
+    set task_id = #{taskId,jdbcType=VARCHAR},
+      host = #{host,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      status_msg = #{statusMsg,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      time_spends = #{timeSpends,jdbcType=BIGINT},
+      param = #{param,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="club.super13.ds.model.TaskStatus" >
+    update ds_task_status
+    set task_id = #{taskId,jdbcType=VARCHAR},
+      host = #{host,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      status_msg = #{statusMsg,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      time_spends = #{timeSpends,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
