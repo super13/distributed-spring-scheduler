@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -46,10 +47,10 @@ public class ScheduleNodeServiceImpl implements ScheduleNodeService {
             node=new ScheduleNode();
             node.setHost(host)
                     .setIsLeader(CollectionUtils.isEmpty(scheduleNodeMapper.selectAllScheduleNodes())?1:0)
-                    .setLastPing(System.currentTimeMillis());
+                    .setLastPing(new Date());
             scheduleNodeMapper.insertSelective(node);
         }else{
-            node.setLastPing(System.currentTimeMillis());
+            node.setLastPing(new Date());
             scheduleNodeMapper.updateByPrimaryKeySelective(node);
         }
     }
@@ -57,8 +58,9 @@ public class ScheduleNodeServiceImpl implements ScheduleNodeService {
     @Override
     public void checkLeaderShip() {
         final List<ScheduleNode> allNodes = scheduleNodeMapper.selectAllScheduleNodes();
-        final long inactiveCase=System.currentTimeMillis()-INACTIVETIME;
-        final List<ScheduleNode> activeNodes = allNodes.stream().filter(s -> s.getLastPing() > inactiveCase).collect(Collectors.toList());
+        final Date inactiveCase=new Date(System.currentTimeMillis()-INACTIVETIME);
+
+        final List<ScheduleNode> activeNodes = allNodes.stream().filter(s -> s.getLastPing().after(inactiveCase)).collect(Collectors.toList());
         Optional<ScheduleNode> leaderNode =allNodes.stream().filter(s-> s.getIsLeader().equals(1)).findFirst();
         if(leaderNode.isPresent()&&activeNodes.contains(leaderNode.get())){
             log.info("active Leader Node:%s",leaderNode.get().getHost());

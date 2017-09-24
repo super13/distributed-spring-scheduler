@@ -11,10 +11,7 @@ import org.springframework.scheduling.support.ScheduledMethodRunnable;
 import org.springframework.util.StringUtils;
 import org.springframework.util.StringValueResolver;
 
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Created by super13 on 7/17/17.
@@ -82,8 +79,8 @@ public class LeaderTaskRunnable implements Runnable{
                 .setStatus(TaskStatusConstant.RUNNING.getStatus())
                 .setStatusMsg(TaskStatusConstant.RUNNING.getStatusMsg())
                 .setHost(host)
-                .setStartTime(System.currentTimeMillis())
-                .setEndTime(1000L)//随便之前的时间
+                .setStartTime(new Date())
+                .setEndTime(new Date(1000L))//随便之前的时间
                 .setTaskId(methodName);
         if (!ignoreRecordsTasksSet.contains(methodName)) {
             log.debug("task %s begin.", methodName);
@@ -102,7 +99,7 @@ public class LeaderTaskRunnable implements Runnable{
         if (!ignoreRecordsTasksSet.contains(methodName)) {
             log.debug("task %s end.cost:%d ms", methodName, cost);
             taskStatus.setTimeSpends(cost)
-                    .setEndTime(System.currentTimeMillis())
+                    .setEndTime(new Date())
                     .setStatus(TaskStatusConstant.ENDED.getStatus())
                     .setStatusMsg(TaskStatusConstant.ENDED.getStatusMsg());
             if (!StringUtils.isEmpty(eMsg)) {

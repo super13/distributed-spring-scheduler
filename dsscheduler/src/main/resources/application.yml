@@ -1,9 +1,9 @@
 spring:
     datasource:
         name: test
-        url: jdbc:mysql://localhost:3306/dsscheudler?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+        url: jdbc:mysql://localhost:3306/ds_scheduler?useUnicode=true&characterEncoding=utf8&autoReconnect=true
         username: root
-        password: 123456
+        password: 123457
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.jdbc.Driver
         #初始化连接数量，最大最小连接数
@@ -36,7 +36,7 @@ spring:
         filters: stat
 
 mybatis:
-  mapperLocations: classpath*:club.super13.ds.mapping.*.xml
+  mapperLocations: classpath:club.super13.ds.mapping.*.xml
   typeAliasesPackage: club.super13.ds.model
 
 pagehelper:

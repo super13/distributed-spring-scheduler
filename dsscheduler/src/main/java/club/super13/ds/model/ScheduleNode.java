@@ -1,13 +1,15 @@
 package club.super13.ds.model;
 
+import java.util.Date;
+
 public class ScheduleNode {
     private Long id;
 
     private String host;
 
-    private Long lastPing;
+    private Date lastPing;
 
-    private Long createTime;
+    private Date createTime;
 
     private Integer isLeader;
 
@@ -30,20 +32,20 @@ public class ScheduleNode {
         return this;
     }
 
-    public Long getLastPing() {
+    public Date getLastPing() {
         return lastPing;
     }
 
-    public ScheduleNode setLastPing(Long lastPing) {
+    public ScheduleNode setLastPing(Date lastPing) {
         this.lastPing = lastPing;
         return this;
     }
 
-    public Long getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public ScheduleNode setCreateTime(Long createTime) {
+    public ScheduleNode setCreateTime(Date createTime) {
         this.createTime = createTime;
         return this;
     }

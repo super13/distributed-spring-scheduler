@@ -1,4 +1,7 @@
 package club.super13.ds.model;
+
+import java.util.Date;
+
 public class TaskStatus {
     private Long id;
 
@@ -10,14 +13,40 @@ public class TaskStatus {
 
     private String statusMsg;
 
-    private Long startTime;
+    private Date startTime;
 
-    private Long endTime;
+    private Date endTime;
 
     private Long timeSpends;
 
     private String param;
 
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public TaskStatus setStartTime(Date startTime) {
+        this.startTime = startTime;
+        return this;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public TaskStatus setEndTime(Date endTime) {
+        this.endTime = endTime;
+        return this;
+    }
+
+    public Long getTimeSpends() {
+        return timeSpends;
+    }
+
+    public TaskStatus setTimeSpends(Long timeSpends) {
+        this.timeSpends = timeSpends;
+        return this;
+    }
 
     public Long getId() {
         return id;
@@ -64,32 +93,8 @@ public class TaskStatus {
         return this;
     }
 
-    public Long getStartTime() {
-        return startTime;
-    }
 
-    public TaskStatus setStartTime(Long startTime) {
-        this.startTime = startTime;
-        return this;
-    }
 
-    public Long getEndTime() {
-        return endTime;
-    }
-
-    public TaskStatus setEndTime(Long endTime) {
-        this.endTime = endTime;
-        return this;
-    }
-
-    public Long getTimeSpends() {
-        return timeSpends;
-    }
-
-    public TaskStatus setTimeSpends(Long timeSpends) {
-        this.timeSpends = timeSpends;
-        return this;
-    }
 
     public String getParam() {
         return param;
