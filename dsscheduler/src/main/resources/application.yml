@@ -36,9 +36,9 @@ spring:
         filters: stat
 
 mybatis:
-  mapperLocations: classpath*:club.super13.club.super13.ds.mapping.*.xml
-  typeAliasesPackage: club.super13.club.super13.ds.model
- 
+  mapperLocations: classpath*:club.super13.ds.mapping.*.xml
+  typeAliasesPackage: club.super13.ds.model
+
 pagehelper:
   helper-dialect: mysql
   reasonable: true

@@ -2,6 +2,8 @@ package club.super13.ds.mapping;
 
 import club.super13.ds.model.ScheduleNode;
 
+import java.util.List;
+
 public interface ScheduleNodeMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -14,4 +16,8 @@ public interface ScheduleNodeMapper {
     int updateByPrimaryKeySelective(ScheduleNode record);
 
     int updateByPrimaryKey(ScheduleNode record);
+
+    ScheduleNode selectByHost(String host);
+
+    List<ScheduleNode> selectAllScheduleNodes();
 }

@@ -18,7 +18,7 @@ public class NodeCheckSchedule {
     private ScheduleNodeService scheduleNodeService;
 
 
-    @Scheduled(cron = "0 0/5 * * * ?")
+    @Scheduled(cron = "0 0/2 * * * ?")
     @LeaderTaskType(type=LeaderTaskTypeEnum.PARALLEL)
     public void pingNode() {
         scheduleNodeService.pingNode();
