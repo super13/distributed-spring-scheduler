@@ -39,6 +39,7 @@ mybatis:
   mapperLocations: classpath:club.super13.ds.mapping.*.xml
   typeAliasesPackage: club.super13.ds.model
 
+
 pagehelper:
   helper-dialect: mysql
   reasonable: true

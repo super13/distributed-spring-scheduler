@@ -18,9 +18,7 @@ public interface ScheduleNodeMapper {
 
     int updateByPrimaryKey(ScheduleNode record);
 
-    @Select("select * from ds_schedule_nodes where host=#{host}")
     ScheduleNode selectByHost(String host);
 
-    @Select("select * from ds_schedule_nodes")
     List<ScheduleNode> selectAllScheduleNodes();
 }
